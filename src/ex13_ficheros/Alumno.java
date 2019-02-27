@@ -4,11 +4,13 @@
  */
 package ex13_ficheros;
 
+import java.io.Serializable;
+
 /**
  *
- * @author lvazquezdorna
+ * @author clamascabaleiro
  */
-public class Alumno {
+public class Alumno implements Serializable {
 
     private String nome;
     private int nota;
@@ -20,7 +22,7 @@ public class Alumno {
         this.nome = nome;
         this.nota = nota;
     }
-
+    
     public String getNome() {
         return nome;
     }
@@ -39,7 +41,7 @@ public class Alumno {
 
     @Override
     public String toString() {
-        return "nome: " + nome + ", nota= " + nota;
+        return  nome + ", " + nota;
     }
 
 }

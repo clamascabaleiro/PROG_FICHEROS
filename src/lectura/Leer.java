@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author lvazquezdorna
+ * @author clamascabaleiro
  */
 public class Leer {
     // declarar un scanner

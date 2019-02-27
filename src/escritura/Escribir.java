@@ -8,11 +8,15 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import utilidades.PedirDatos;
+import Utilidad.PedirDatos;
+import ex13_ficheros.Alumno;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  *
- * @author lvazquezdorna
+ * @author clamascabaleiro
  */
 public class Escribir {
 
@@ -39,4 +43,29 @@ public class Escribir {
 
         return fich;
     }
+    public void escribirLineas(File fich,String nomeFich, ArrayList<Alumno>lista){
+        try{
+            f = new PrintWriter(fich);
+            for(Alumno al:lista){
+                f.println(al.getNome() + "," + al.getNota());
+            }
+            
+        } catch (FileNotFoundException ex) {
+            System.out.println("error" + ex.getMessage());
+        }finally{
+            f.close();
+        }
+        
+    }
+     public void engadir (String nomeFich){
+         try{
+             f = new PrintWriter(new FileWriter(nomeFich + ".txt", true));
+             Alumno al = new Alumno(PedirDatos.palabra("nome"), PedirDatos.entero("nota"));
+             f.println(al);
+         }catch (IOException e){
+             System.out.println("Error" + e.getMessage());
+         }finally{
+             f.close();
+         }
+     }
 }

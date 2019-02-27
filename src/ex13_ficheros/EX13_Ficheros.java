@@ -5,6 +5,7 @@
  */
 package ex13_ficheros;
 
+import Utilidad.PedirDatos;
 import escritura.Escribir;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -15,7 +16,7 @@ import lectura.Leer;
 
 /**
  *
- * @author Lara Vazquez Dorna
+ * @author clamascabaleiro
  */
 public class EX13_Ficheros {
 
@@ -34,10 +35,11 @@ public class EX13_Ficheros {
         File c = new File("nomesComas.txt");
         File n = new File("numeros.txt");
         File a = new File("Alumnos.txt");
+        File z = new File("Alumnado.txt");
 
         //crear arrayList 
         ArrayList<Integer> numeros = new ArrayList<>();
-        ArrayList<Alumno> alumnos = new ArrayList<>();
+        ArrayList<Alumno> lista = new ArrayList<>();
 
         //se lee el fichero simplemente en el metodo esta capturada la excepcion
         obxLeer.leerPalabras(f);
@@ -71,7 +73,21 @@ public class EX13_Ficheros {
 
 //escribir en un fichero de numeros
         obxEscribir.escribirNumeros("num");
-
+//escribir lineas
+        for(int i = 0;i<4;i++){
+            Alumno al = new Alumno(PedirDatos.palabra("nome"), PedirDatos.entero("nota"));
+            lista.add(al);
+        }
+        obxEscribir.escribirLineas(z,"Alumnado", lista);
+//añadir lineas
+        obxEscribir.engadir("Alumnado");
+//escribir Serializable   
+        EscribirSerializable obxest = new EscribirSerializable();
+        obxest.escribirObjetosSeri("notasalum");
     }
+
+    
+          
+
 
 }
